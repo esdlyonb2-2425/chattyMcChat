@@ -23,6 +23,8 @@ const io = socketIo(server, {
         console.log('New user connect to the server');
         console.log('user-Socker ID :'+ socket.id);
 
+
+
         socket.on('message', (message) => {
             console.log('Received message from ' + socket.id);
             console.log(message.content);
