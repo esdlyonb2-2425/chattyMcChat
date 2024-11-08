@@ -1,0 +1,22 @@
+<VirtualHost *:80>
+    ServerName chatserver.esdlyon.dev
+    ServerAdmin blabla@mail.com
+
+    ProxyPreserveHost On
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / http://127.0.0.1:8080/
+    ProxyPass /socket.io/ ws://127.0.0.1:8080/socket.io/
+    ProxyPassReverse /socket.io/ ws://127.0.0.1:8080/socket.io/
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+RewriteEngine on
+RewriteCond %{SERVER_NAME} =chatserver.esdlyon.dev
+RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+
+
+mods a activer : 
+a2enmod  prox proxy_http proxy_wstunnel
+
+
+
