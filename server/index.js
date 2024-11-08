@@ -13,7 +13,7 @@ const io = socketIo(server, {
 
     transports: ['websocket', 'polling'],
     cors: {
-        origin: "chatclient.esdlyon.dev",
+        origin: "https://chatclient.esdlyon.dev",
         methods: ["GET","POST"],
     }
 
